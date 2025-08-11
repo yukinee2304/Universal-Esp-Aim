@@ -18,13 +18,13 @@ local espEnabled = false
 local aimbotEnabled = false
 
 local function createESP(player)
-    if not espEnabled or player == localPlayer or not player.Character or (localPlayer.Team and player.Team == localPlayer.Team) then return end
+    if not player.Character then return end
     local character = player.Character
     local highlight = Instance.new("Highlight")
     highlight.Parent = character
     highlight.Adornee = character
-    highlight.FillColor = Color3.new(1, 0, 0)
-    highlight.OutlineColor = Color3.new(1, 1, 1)
+    highlight.FillColor = Color3.new(1, 0, 0) -- Red fill
+    highlight.OutlineColor = Color3.new(1, 1, 1) -- White outline
     highlight.FillTransparency = 0.5
     highlight.OutlineTransparency = 0
 end
@@ -47,7 +47,7 @@ players.PlayerAdded:Connect(function(player)
 end)
 
 for _, player in ipairs(players:GetPlayers()) do
-    if player ~= localPlayer and player.Character then
+    if player.Character then
         createESP(player)
     end
     player.CharacterAdded:Connect(function()
