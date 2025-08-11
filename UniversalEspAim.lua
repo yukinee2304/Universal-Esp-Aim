@@ -107,4 +107,30 @@ Tab:AddToggle({
     end
 })
 
+Tab:AddSlider({
+    Name = "Aimbot Smoothness",
+    Min = 0.1,
+    Max = 1,
+    Default = 1,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 0.1,
+    ValueName = "factor",
+    Callback = function(Value)
+        SMOOTHNESS = Value
+    end
+})
+
+Tab:AddSlider({
+    Name = "Aimbot FOV",
+    Min = 5,
+    Max = 90,
+    Default = 10,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "degrees",
+    Callback = function(Value)
+        FOV = Value
+    end
+})
+
 OrionLib:Init()
